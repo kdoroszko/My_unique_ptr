@@ -3,16 +3,17 @@
 
 #include "My_unique_ptr.hpp"
 
-void test_create_object_my_unique_ptr()
+void test_my_unique_ptr_stores_pointer()
 {
-    My_unique_ptr ptr;
+    int number = 1;
+    My_unique_ptr ptr(&number);
 }
 
 int main()
 {
     try
     {
-        test_create_object_my_unique_ptr();
+        test_my_unique_ptr_stores_pointer();
     }
 
     catch(const std::logic_error& e)
