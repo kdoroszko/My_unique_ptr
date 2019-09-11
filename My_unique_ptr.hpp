@@ -1,0 +1,1 @@
+class My_unique_ptr{};
