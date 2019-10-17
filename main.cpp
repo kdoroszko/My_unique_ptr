@@ -14,15 +14,7 @@ void test_my_unique_ptr_stores_pointer_to_any_type_of_data()
 
 int main()
 {
-    try
-    {
-        test_my_unique_ptr_stores_pointer_to_any_type_of_data();
-    }
-
-    catch(const std::logic_error& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
+    test_my_unique_ptr_stores_pointer_to_any_type_of_data();
 
     return 0;
 }
