@@ -3,14 +3,17 @@
 
 #include "My_unique_ptr.hpp"
 
-void no_test_add_destructor()
+void test_add_dereference_operator()
 {
-    My_unique_ptr<int> (new int);
+    int x = 1;
+    My_unique_ptr<int> ptr(new int);
+    *ptr = x;
+    std::cout << *ptr << '\n';
 }
 
 int main()
 {
-    no_test_add_destructor();
+    test_add_dereference_operator();
 
     return 0;
 }

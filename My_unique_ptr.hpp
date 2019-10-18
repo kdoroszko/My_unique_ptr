@@ -10,6 +10,11 @@ public:
         delete ptr;
     }
 
+    T& operator*() const
+    {
+        return *ptr;
+    }
+
 private:
 
     T *ptr;
