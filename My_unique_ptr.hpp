@@ -7,6 +7,8 @@ public:
 
     My_unique_ptr(T *new_ptr = nullptr) : ptr(new_ptr) {}
 
+    My_unique_ptr(const My_unique_ptr &new_ptr) = delete;
+
     ~My_unique_ptr()
     {
         delete ptr;
