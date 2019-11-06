@@ -10,4 +10,4 @@ set(SRC_LIST
 )
 
 add_executable(${PROJECT_NAME} ${SRC_LIST})
-add_compile_options(${PROJECT_NAME} -Wall -Wextra)
+target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra)
