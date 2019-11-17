@@ -9,6 +9,11 @@ public:
 
     My_unique_ptr(const My_unique_ptr &new_ptr) = delete;
 
+    My_unique_ptr(My_unique_ptr &&other) : ptr(other.ptr)
+    {
+        other.ptr = nullptr;
+    }
+
     ~My_unique_ptr()
     {
         delete ptr;
