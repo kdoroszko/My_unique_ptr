@@ -19,6 +19,8 @@ public:
         delete ptr;
     }
 
+    My_unique_ptr &operator= (const My_unique_ptr &new_ptr) = delete;
+
     T& operator*() const
     {
         return *ptr;
