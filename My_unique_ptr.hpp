@@ -1,5 +1,7 @@
 #pragma once
 
+#include <utility>
+
 template <typename T>
 class My_unique_ptr
 {
@@ -20,6 +22,12 @@ public:
     }
 
     My_unique_ptr &operator= (const My_unique_ptr &new_ptr) = delete;
+
+    My_unique_ptr &operator= (My_unique_ptr &&other)
+    {
+        ptr = std::exchange(other.ptr, nullptr);
+        return *this;
+    }
 
     T& operator*() const
     {
