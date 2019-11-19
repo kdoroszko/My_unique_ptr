@@ -3,6 +3,16 @@
 
 #include "My_unique_ptr.hpp"
 
+class Test_class
+{
+public:
+
+    void dereference_test()
+    {
+        std::cout << "Dereference by arrow operator is accomplished\n";
+    }
+};
+
 void test_add_move_constructor()
 {
     My_unique_ptr<int> u_ptr(new int);
@@ -28,10 +38,17 @@ void test_add_move_assignment_operator()
         std::cout << "u_ptr3 now is nullptr\n";
 }
 
+void test_add_arrow_operator()
+{
+    My_unique_ptr<Test_class> ptr(new Test_class);
+    ptr->dereference_test();
+}
+
 int main()
 {
     test_add_move_constructor();
     test_add_move_assignment_operator();
+    test_add_arrow_operator();
 
     return 0;
 }

@@ -34,6 +34,11 @@ public:
         return *ptr;
     }
 
+    T* operator->() const
+    {
+        return ptr;
+    }
+
     bool operator== (const My_unique_ptr<T> &other) const
     {
         return ptr == other.ptr;
