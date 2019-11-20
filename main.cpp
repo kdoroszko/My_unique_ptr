@@ -52,12 +52,25 @@ void test_take_pointer_to_the_managed_object_by_method_get()
     std::cout << *ptr_to_string << '\n';
 }
 
+void test_release_the_ownership_of_the_managed_object()
+{
+    My_unique_ptr<int> ptr(new int(123));
+    My_unique_ptr<int> ptr2(new int);
+
+    ptr2 = ptr.release();
+
+    std::cout << "ptr2 take object from ptr and now has value: " << *ptr2 << '\n';
+    if(ptr == nullptr)
+        std::cout << "ptr now is nullptr\n";
+}
+
 int main()
 {
     test_add_move_constructor();
     test_add_move_assignment_operator();
     test_add_arrow_operator();
     test_take_pointer_to_the_managed_object_by_method_get();
+    test_release_the_ownership_of_the_managed_object();
 
     return 0;
 }

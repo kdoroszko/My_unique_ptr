@@ -49,6 +49,11 @@ public:
         return ptr;
     }
 
+    T* release()
+    {
+        return std::exchange(ptr, nullptr);
+    }
+
 private:
 
     T *ptr;
