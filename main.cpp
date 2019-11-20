@@ -1,5 +1,6 @@
 #include <iostream>
 #include <utility>
+#include <string>
 
 #include "My_unique_ptr.hpp"
 
@@ -44,11 +45,19 @@ void test_add_arrow_operator()
     ptr->dereference_test();
 }
 
+void test_take_pointer_to_the_managed_object_by_method_get()
+{
+    My_unique_ptr<std::string> ptr(new std::string("Method get() works"));
+    std::string *ptr_to_string = ptr.get();
+    std::cout << *ptr_to_string << '\n';
+}
+
 int main()
 {
     test_add_move_constructor();
     test_add_move_assignment_operator();
     test_add_arrow_operator();
+    test_take_pointer_to_the_managed_object_by_method_get();
 
     return 0;
 }

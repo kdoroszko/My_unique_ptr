@@ -31,17 +31,22 @@ public:
 
     T& operator*() const
     {
-        return *ptr;
+        return *(this->get());
     }
 
     T* operator->() const
     {
-        return ptr;
+        return this->get();
     }
 
     bool operator== (const My_unique_ptr<T> &other) const
     {
         return ptr == other.ptr;
+    }
+
+    T* get() const
+    {
+        return ptr;
     }
 
 private:
