@@ -5,4 +5,4 @@ Create your own unique_ptr. Try TDD. Requirements:
 - RAII (allocate memory in constructor, deallocate in destructor),
 - copy forbidden,
 - move allowed,
-- write operator*, operator->, get(), release()
+- write operator*, operator->, get(), release(), reset()

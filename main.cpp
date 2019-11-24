@@ -64,6 +64,19 @@ void test_release_the_ownership_of_the_managed_object()
         std::cout << "ptr now is nullptr\n";
 }
 
+void test_replace_the_managed_object_by_method_reset()
+{
+    My_unique_ptr<std::string> ptr(new std::string("Method reset() doesn't work"));
+    ptr.reset(new std::string("Method reset() works"));
+
+    std::cout << *ptr << '\n';
+
+    My_unique_ptr<std::string> ptr2(new std::string("ptr take text from ptr2"));
+    ptr.reset(ptr2.release());
+
+    std::cout << *ptr << '\n';
+}
+
 int main()
 {
     test_add_move_constructor();
@@ -71,6 +84,7 @@ int main()
     test_add_arrow_operator();
     test_take_pointer_to_the_managed_object_by_method_get();
     test_release_the_ownership_of_the_managed_object();
+    test_replace_the_managed_object_by_method_reset();
 
     return 0;
 }

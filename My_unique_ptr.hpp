@@ -54,6 +54,14 @@ public:
         return std::exchange(ptr, nullptr);
     }
 
+    void reset(T *other)
+    {
+        T *temp_ptr = std::exchange(ptr, other);
+
+        if(temp_ptr)
+            delete temp_ptr;
+    }
+
 private:
 
     T *ptr;
