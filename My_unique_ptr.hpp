@@ -1,6 +1,7 @@
 #pragma once
 
 #include <utility>
+#include <cstddef>
 
 template <typename T>
 class My_unique_ptr
@@ -42,6 +43,11 @@ public:
     bool operator== (const My_unique_ptr<T> &other) const
     {
         return ptr == other.ptr;
+    }
+
+    bool operator== (const std::nullptr_t) const
+    {
+        return !ptr;
     }
 
     T* get() const
