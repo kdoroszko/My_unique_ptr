@@ -55,13 +55,15 @@ void test_take_pointer_to_the_managed_object_by_method_get()
 void test_release_the_ownership_of_the_managed_object()
 {
     My_unique_ptr<int> ptr(new int(123));
-    My_unique_ptr<int> ptr2(new int);
+    int *ptr2;
 
     ptr2 = ptr.release();
 
     std::cout << "ptr2 take object from ptr and now has value: " << *ptr2 << '\n';
     if(ptr == nullptr)
         std::cout << "ptr now is nullptr\n";
+
+    delete ptr2;
 }
 
 void test_replace_the_managed_object_by_method_reset()
