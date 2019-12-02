@@ -62,10 +62,7 @@ public:
 
     void reset(T *other)
     {
-        T *temp_ptr = std::exchange(ptr, other);
-
-        if(temp_ptr)
-            delete temp_ptr;
+        delete std::exchange(ptr, other);
     }
 
 private:

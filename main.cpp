@@ -59,7 +59,7 @@ void test_release_the_ownership_of_the_managed_object()
 
     ptr2 = ptr.release();
 
-    std::cout << "ptr2 take object from ptr and now has value: " << *ptr2 << '\n';
+    std::cout << "ptr2 takes object from ptr and now has value: " << *ptr2 << '\n';
     if(ptr == nullptr)
         std::cout << "ptr now is nullptr\n";
 
@@ -73,7 +73,7 @@ void test_replace_the_managed_object_by_method_reset()
 
     std::cout << *ptr << '\n';
 
-    My_unique_ptr<std::string> ptr2(new std::string("ptr take text from ptr2"));
+    My_unique_ptr<std::string> ptr2(new std::string("ptr takes text from ptr2"));
     ptr.reset(ptr2.release());
 
     std::cout << *ptr << '\n';
