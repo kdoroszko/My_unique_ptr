@@ -50,6 +50,11 @@ public:
         return !ptr;
     }
 
+    explicit operator bool() const
+    {
+        return ptr ? true : false;
+    }
+
     T* get() const
     {
         return ptr;

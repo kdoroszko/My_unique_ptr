@@ -52,20 +52,6 @@ void test_take_pointer_to_the_managed_object_by_method_get()
     std::cout << *ptr_to_string << '\n';
 }
 
-void test_release_the_ownership_of_the_managed_object()
-{
-    My_unique_ptr<int> ptr(new int(123));
-    int *ptr2;
-
-    ptr2 = ptr.release();
-
-    std::cout << "ptr2 takes object from ptr and now has value: " << *ptr2 << '\n';
-    if(ptr == nullptr)
-        std::cout << "ptr now is nullptr\n";
-
-    delete ptr2;
-}
-
 void test_replace_the_managed_object_by_method_reset()
 {
     My_unique_ptr<std::string> ptr(new std::string("Method reset() doesn't work"));
@@ -79,14 +65,26 @@ void test_replace_the_managed_object_by_method_reset()
     std::cout << *ptr << '\n';
 }
 
+void test_add_bool_operator()
+{
+    My_unique_ptr<int> ptr(new int(1));
+    My_unique_ptr<int> ptr2;
+
+    if(ptr)
+        std::cout << "Boolean test passed!\n";
+
+    if(!ptr2)
+        std::cout << "Boolean test passed second time!\n";
+}
+
 int main()
 {
     test_add_move_constructor();
     test_add_move_assignment_operator();
     test_add_arrow_operator();
     test_take_pointer_to_the_managed_object_by_method_get();
-    test_release_the_ownership_of_the_managed_object();
     test_replace_the_managed_object_by_method_reset();
+    test_add_bool_operator();
 
     return 0;
 }
