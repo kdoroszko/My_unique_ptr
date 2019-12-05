@@ -26,19 +26,6 @@ void test_add_move_constructor()
         std::cout << "u_ptr now is nullptr\n";
 }
 
-void test_add_move_assignment_operator()
-{
-    My_unique_ptr<int> u_ptr3(new int);
-    *u_ptr3 = 7;
-
-    My_unique_ptr<int> u_ptr4;
-    u_ptr4 = std::move(u_ptr3);
-    std::cout << "*u_ptr4 = " << *u_ptr4 << '\n';
-
-    if(u_ptr3 == nullptr)
-        std::cout << "u_ptr3 now is nullptr\n";
-}
-
 void test_add_arrow_operator()
 {
     My_unique_ptr<Test_class> ptr(new Test_class);
@@ -77,14 +64,20 @@ void test_add_bool_operator()
         std::cout << "Boolean test passed second time!\n";
 }
 
+void test_remove_memory_leakage_in_move_assignment_operator()
+{
+    My_unique_ptr<int> ptr(new int), ptr2(new int);
+    ptr = std::move(ptr2);
+}
+
 int main()
 {
     test_add_move_constructor();
-    test_add_move_assignment_operator();
     test_add_arrow_operator();
     test_take_pointer_to_the_managed_object_by_method_get();
     test_replace_the_managed_object_by_method_reset();
     test_add_bool_operator();
+    test_remove_memory_leakage_in_move_assignment_operator();
 
     return 0;
 }

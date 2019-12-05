@@ -26,7 +26,10 @@ public:
 
     My_unique_ptr &operator= (My_unique_ptr &&other)
     {
+        T *temp_ptr = ptr;
         ptr = std::exchange(other.ptr, nullptr);
+
+        delete temp_ptr;
         return *this;
     }
 
@@ -40,7 +43,7 @@ public:
         return this->get();
     }
 
-    bool operator== (const My_unique_ptr<T> &other) const
+    bool operator== (const My_unique_ptr &other) const
     {
         return ptr == other.ptr;
     }
